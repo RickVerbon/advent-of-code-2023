@@ -8,16 +8,11 @@ total = 0
 with open("input.txt", "r") as f:
     data = f.readlines()
 
-count = 1
 for item in data:
     item = item.strip()
-    item = [int(i) for i in item if i.isdigit()]
+    numbers = [int(i) for i in item if i.isdigit()]
+    if numbers:
+        new_number = str(numbers[0]) + str(numbers[-1])
+        total += int(new_number)
 
-    if len(item) == 1:
-        new_number = str(item[0]) + str(item[0])
-        
-    elif len(item) > 1:
-        first = item[0]
-        last = item[-1]
-        new_number = str(first) + str(last)
-    total += int(new_number)
+print(total)
